@@ -1,0 +1,5 @@
+myenv/
+venv/
+.python-version
+
+.ipynb_checkpoints
