@@ -3,3 +3,16 @@
 
 # virtual envs
 venv/
+myenv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# IPython
+profile_default/
+ipython_config.py
