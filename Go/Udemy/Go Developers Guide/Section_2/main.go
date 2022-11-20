@@ -18,7 +18,7 @@ func main() {
     // a data structure is a slice(which can contain objects of the same type, and it can grow or shrink in size)
     cards := newDeck()
     //cards.print()    
-    hand, remainingCards := deal(cards, 3)
-    hand.print()
+    _, remainingCards := deal(cards, 3)
+    remainingCards.shuffle()
     remainingCards.print()
 }

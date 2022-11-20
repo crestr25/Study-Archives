@@ -1,6 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"math/rand"
+	"os"
+	"strings"
+	"time"
+)
+
 // Create a new type of 'deck'
 // which is a slice of strings
 type deck []string
@@ -41,4 +49,37 @@ func (d deck) print() {
 // To return multiple values we specify the type inside of parenthesis separated by a comma
 func deal(d deck, handSize int) (deck, deck) {
     return d[:handSize], d[handSize:]
+}
+
+func (d deck) toString() string {
+    return strings.Join([]string(d), ",")
+}
+
+func (d deck) saveToFile(filename string) error {
+    return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
+}
+
+// Type Error returns nil if nothing went wrong or an error will be return
+// usually after a type error is returned we check if it has a value and handle that.
+func newDeckFromFile(filename string) deck {
+    bs, err := ioutil.ReadFile(filename)
+    // We verify that there is not an error.
+    if err != nil {
+        // Option #1 - log the error and return a call to newDeck()
+        // Option #2 - Log the error and entirely quit the program
+        fmt.Println("Error:", err)
+        os.Exit(1)
+    }
+
+    s := strings.Split(string(bs), ",")
+    return deck(s)
+}
+
+func (d deck) shuffle() {
+    source := rand.NewSource(time.Now().UnixNano())
+    r := rand.New(source)
+    for i := range d {
+        newPosition := r.Intn(len(d) - 1)
+        d[i], d[newPosition] = d[newPosition], d[i]
+    }
 }
