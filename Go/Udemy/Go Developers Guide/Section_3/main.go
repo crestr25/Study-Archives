@@ -38,7 +38,13 @@ func embeddedStructs() {
         }, // must have a comma man!!!
     }
     fmt.Println(carlos)
+
     fmt.Printf("%+v", carlos) // print every value, we need to pass a string and format it 
+
+    // Receiver functions
+    carlosPointer := &carlos
+    carlosPointer.updateName("Charlie")
+    carlos.print()
 }
 
 func basicStructs() {
@@ -61,4 +67,20 @@ func basicStructs() {
     pia.firstName = "Pia"
     pia.lastName = "Fonseca"
     fmt.Printf("\n%+v\n", pia) // print every value, we need to pass a string and format it 
+}
+
+// Receiver functions
+func (p importantPerson) print() {
+    fmt.Printf("\n%+v\n", p)
+}
+
+// To make receivers that actually modify the passed struct we have to pass by reference
+// Go is by default a pass by value languaje which passes a copy instead of the original
+
+// &variable -> give me the memory address of the value this variable is pointing at
+// *pointer -> Give me the value this memory address is pointing at
+// In the function *type means a type descriptor pointer to a importantPerson.
+// In  the body we see the actual operator that gives the value
+func (pointerToPerson *importantPerson) updateName(newFirstName string) {
+    (*pointerToPerson).firstName = newFirstName
 }
