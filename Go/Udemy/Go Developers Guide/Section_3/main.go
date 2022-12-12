@@ -42,7 +42,8 @@ func embeddedStructs() {
     fmt.Printf("%+v", carlos) // print every value, we need to pass a string and format it 
 
     // Receiver functions
-    carlosPointer := &carlos
+    carlosPointer := &carlos // We can ommit this line since Go let's us use the receivers
+    // just by specifiying the pointer there.
     carlosPointer.updateName("Charlie")
     carlos.print()
 }
@@ -80,6 +81,7 @@ func (p importantPerson) print() {
 // &variable -> give me the memory address of the value this variable is pointing at
 // *pointer -> Give me the value this memory address is pointing at
 // In the function *type means a type descriptor pointer to a importantPerson.
+// so whenever i see a * next to a type it means pointer var to that specified type
 // In  the body we see the actual operator that gives the value
 func (pointerToPerson *importantPerson) updateName(newFirstName string) {
     (*pointerToPerson).firstName = newFirstName
