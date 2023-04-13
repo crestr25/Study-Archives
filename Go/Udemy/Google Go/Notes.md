@@ -112,7 +112,7 @@ We can create our own types using the `type` keyword
 # 2. Types
 ---
 
-## Bool Type
+## 2.1 Bool Type
 
 > A binary variable, having two possible values True and False.
 
@@ -124,13 +124,13 @@ Examples:
 - New bool variable: `var x bool` (gets `false` assigned as **zero value**.)
 - New bool variable with assigned value `var x bool = true`
 
-## Numeric Type
+## 2.2 Numeric Type
 
 All numeric types are distinct except for.
 - `byte` is an alias for `uint8`
 - `rune` is an alias for `int32` (another word for characters which are 32bits in UTF-8)
 
-### Integers
+### 2.2.1 Integers
 
 > An Int variable, stores whole numbers.
 
@@ -142,14 +142,27 @@ All numeric types are distinct except for.
 - Conversions are required when different numeric types are mixed in an expression or assignment. For instance `int` and `int32/int64` (depending on the system/architecture) are not the same type even though they are the same size
 
 
-### Float
+### 2.2.2 Float
 
 > A float variable, stores floating point numbers (real numbers).
 
 - Floats can also have a precision defined.
     - `float32`, `float64`
 
-## String Type
+### 2.2.3 Iota
+
+> A iota variable, stores constants of ints and autoincrements the value by 1.
+
+- It is defined in a `const` block and starts at 0 on the first variable
+    - ```
+       const (
+            a = iota // value of 0
+            b = iota // value of 1
+            c // gets picked up as iota, value of 2
+       )
+        ```
+
+## 2.3 String Type
 
 > A String value is a sequence of bytes.
 

@@ -8,6 +8,18 @@ const (
 	c string = "Hello"
 )
 
+const (
+    // will auto increment only what is found here
+    a_iota = iota
+    b_iota = iota
+    c_iota // auto increments still
+)
+
+const (
+    // it will start again from 0 here 
+    d_iota = iota
+)
+
 func main() {
 	// Bool examples
 	boolType()
@@ -20,6 +32,9 @@ func main() {
 
 	// Const examples
 	constants()
+
+    // Iota examples
+    iota_type()
 }
 
 func boolType() {
@@ -82,4 +97,11 @@ func constants() {
 	fmt.Printf("constant a of type %T has value %v \n", a, a)
 	fmt.Printf("constant b of type %T has value %v \n", b, b)
 	fmt.Printf("constant c of type %T has value %v \n", c, c)
+}
+
+func iota_type() {
+    // iota types are ints
+	fmt.Printf("iota constant a_iota of type %T has value %v \n", a_iota, a_iota)
+	fmt.Printf("iota constant b_iota of type %T has value %v \n", b_iota, b_iota)
+	fmt.Printf("iota constant c_iota of type %T has value %v \n", c_iota, c_iota)
 }
