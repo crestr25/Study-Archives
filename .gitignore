@@ -6,6 +6,10 @@
 venv/
 myenv/
 
+# Env variables
+.env
+.envrc
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
