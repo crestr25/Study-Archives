@@ -37,7 +37,6 @@ func (c Customer) ToDto() dto.CustomerResponse {
     }
 }
 
-
 // Secondary Port / Server side interface to communicate with any adapter that implements
 // the interface.
 type CustomerRepository interface {
