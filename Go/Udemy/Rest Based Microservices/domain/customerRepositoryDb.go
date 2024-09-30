@@ -2,9 +2,6 @@ package domain
 
 import (
 	"database/sql"
-	"fmt"
-	"os"
-	"time"
 
 	"github.com/crestr25/banking/errs"
 	"github.com/crestr25/banking/logger"
